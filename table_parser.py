@@ -43,10 +43,15 @@ def main():
     content = read_table("./vanilla_resource/13_australasia.txt")
     jsonString = modify_for_json(content)
     # print(jsonString)
-    with open('string.txt', 'w') as f:
+    with open('jsonfy.txt', 'w') as f:
         f.write(jsonString)
     jsonData = json.loads(jsonString)
-    print(jsonData)
-    
+    # print(jsonData)
+    s = json.dumps(jsonData, indent=4)
+    # print(s)
+    with open('stringfy.txt', 'w') as f:
+        f.write(s)
+    for k, v in jsonData.items():
+        print(k)
 if __name__ == "__main__":
     main()
