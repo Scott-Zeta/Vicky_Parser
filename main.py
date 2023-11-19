@@ -16,7 +16,7 @@ def main():
     
     # output the stringfied data
     s = stringfy(jsonData)
-    with open('./Output/map_data/13_australasia.txt', 'w') as f:
+    with open('./Output/map_data/state_regions/13_australasia.txt', 'w') as f:
         f.write(s)
 
 if __name__ == "__main__":
