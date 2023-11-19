@@ -36,22 +36,11 @@ def modify_for_json(content):
         linesArr.append(line)
     linesArr.insert(0,"{")
     linesArr.append("}")
-    jsonContent = "\n".join(linesArr)
-    return jsonContent
+    jsonfiedString = "\n".join(linesArr)
     
-def main():
-    content = read_table("./vanilla_resource/13_australasia.txt")
-    jsonString = modify_for_json(content)
-    # print(jsonString)
+    # log out the jsonfiedString for debug
     with open('jsonfy.txt', 'w') as f:
-        f.write(jsonString)
-    jsonData = json.loads(jsonString)
-    # print(jsonData)
-    s = json.dumps(jsonData, indent=4)
-    # print(s)
-    with open('stringfy.txt', 'w') as f:
-        f.write(s)
-    for k, v in jsonData.items():
-        print(k)
-if __name__ == "__main__":
-    main()
+        f.write(jsonfiedString)
+        
+    jsonData = json.loads(jsonfiedString)    
+    return jsonData
