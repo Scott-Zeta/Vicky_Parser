@@ -11,6 +11,10 @@ def stringfy(jsonData):
     s = re.sub(arrayRegex, lambda m: '[' + m.group(1).replace('\n', '').replace('  ', '') + ']', s)
     s = s.replace('","', '" "')
     
+    # restore the duplicate key name
+    keyRegex = re.compile(r'("\s*\w+)(_Dup\d+)(\s*"\s*:)')
+    s = keyRegex.sub(r'\1\3',s)
+    
     # unquote the key
     keyRegex = re.compile(r'"\s*([\w]+)\s*"\s*:')
     s = keyRegex.sub(r'\1 :',s)
@@ -22,9 +26,7 @@ def stringfy(jsonData):
     s = s.replace(':','=')
     
     # remove all , 
-    s = s.replace(',','')
-    
-
+    s = s.replace(',','')  
     
     # indentation move left
     s = re.sub(r'^\s{4}', '', s, flags=re.MULTILINE)
@@ -34,16 +36,18 @@ def stringfy(jsonData):
     
     # remove root level {}, re construct the string
     lines = s.strip().split('\n')
-    s = '\n'.join(lines[2:-1])
+    lines[-1] = '\n'
+    s = '\n'.join(lines[2:])
     
-    print(s)
+    # print(s)
     with open('debugOutput/stringfy.txt', 'w') as f:
         f.write(s)
 
 def main():
     # Read the raw original table and parse to json data
-    content = read_table("./vanilla_resource/13_australasia.txt")
+    content = read_table("./historical_resource/13_australasia.txt")
     jsonData = modify_for_json(content)
+    # print(jsonData)
     stringfy(jsonData)
 
 if __name__ == "__main__":
