@@ -1,4 +1,4 @@
-from table_parser import *
+import json
 import re
 
 def stringfy(jsonData):
@@ -39,16 +39,7 @@ def stringfy(jsonData):
     lines[-1] = '\n'
     s = '\n'.join(lines[2:])
     
-    # print(s)
+    # log out for debug
     with open('debugOutput/stringfy.txt', 'w') as f:
         f.write(s)
-
-def main():
-    # Read the raw original table and parse to json data
-    content = read_table("./historical_resource/13_australasia.txt")
-    jsonData = modify_for_json(content)
-    # print(jsonData)
-    stringfy(jsonData)
-
-if __name__ == "__main__":
-    main()
+    return s
