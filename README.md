@@ -16,4 +16,4 @@ Currently I think this can only be used in state_region. Because I didn't do the
 I imported the vanilla game stat_region setting in Au, and did some modification. The twisted file can be recognized by the game and mounted correctly. Next step I would like to use it to do some batch work, which migrates another mod's setting into a vanilla game friendly version.
 Further development is depended on my demand.
 
-## Perhaps doing the work manually is faster than "Automation". I really hope I am wasting time and looks like a clown.
+## Perhaps doing the work manually is faster than "Automation". I really hope I am not wasting time and looks like a jester.
