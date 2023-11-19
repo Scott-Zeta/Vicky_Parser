@@ -24,6 +24,17 @@ def stringfy(jsonData):
     # remove all , 
     s = s.replace(',','')
     
+
+    
+    # indentation move left
+    s = re.sub(r'^\s{4}', '', s, flags=re.MULTILINE)
+
+    # add a new line each element
+    s = re.sub(r'^(?!\s|\}$|\{$)', '\n', s, flags=re.MULTILINE)
+    
+    # remove root level {}, re construct the string
+    lines = s.strip().split('\n')
+    s = '\n'.join(lines[2:-1])
     
     print(s)
     with open('debugOutput/stringfy.txt', 'w') as f:
