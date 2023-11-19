@@ -39,7 +39,7 @@ def modify_for_json(content):
     jsonfiedString = "\n".join(linesArr)
     
     # log out the jsonfiedString for debug
-    with open('jsonfy.txt', 'w') as f:
+    with open('debugOutput/jsonfy.txt', 'w') as f:
         f.write(jsonfiedString)
         
     jsonData = json.loads(jsonfiedString)    

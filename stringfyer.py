@@ -10,7 +10,7 @@ def main():
     s = json.dumps(jsonData, indent=4)
     # Need additional Stringfy Implementation
     print(s)
-    with open('stringfy.txt', 'w') as f:
+    with open('debugOutput/stringfy.txt', 'w') as f:
         f.write(s)
 if __name__ == "__main__":
     main()
