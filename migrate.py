@@ -1,4 +1,5 @@
 import copy
+import math
 from typing import List
 
 arable_resources_list:List[str] = [
@@ -14,6 +15,15 @@ arable_resources_list:List[str] = [
     "bg_dye_plantations", "bg_opium_plantations", "bg_tea_plantations",
     "bg_tobacco_plantations", "bg_sugar_plantations", "bg_banana_plantations"
     ]
+
+grain_resources_list:List[str] = [
+    # Agriculture
+    "bg_rye_farms", "bg_wheat_farms", "bg_rice_farms", 
+    "bg_maize_farms", "bg_millet_farms"
+    ]
+
+# Currently only maximum 3 undiscovered resources exisit: Gold, Oil, Rubber
+undiscovered_resources_key_list:List[str] = ["resource", "resource_Dup1", "resource_Dup2", "resource_Dup3"]
 
 def migrate(historical_data, vanilla_data):
     modified_data = copy.deepcopy(vanilla_data)
@@ -35,7 +45,12 @@ def migrate(historical_data, vanilla_data):
                         resource = "bg_livestock_ranches"
                     mod_arable_resources.add(resource)
                     # the number add to sum of mod_arable_land
-                    mod_arable_land += number
+                    if resource in grain_resources_list:
+                        # crudlly compare the production method, vainilla version is 23.81% higher than historical version
+                        mod_arable_land += math.ceil(number * 0.75)
+                    # The ranches need more analysis 
+                    else:    
+                        mod_arable_land += number
                 else:
                     # for other resources, add key value pairs to mod_capped_resources
                     mod_capped_resources[resource] = number
@@ -45,4 +60,12 @@ def migrate(historical_data, vanilla_data):
             modified_data[k]["capped_resources"] = mod_capped_resources
             modified_data[k]["arable_resources"] = mod_arable_resources
             modified_data[k]["arable_land"] = mod_arable_land
+            
+            # assign the resources(undiscovered), remove the non-exist resources
+            for undiscoverd_key in undiscovered_resources_key_list:
+                if undiscoverd_key in historical_data[k]:
+                    modified_data[k][undiscoverd_key] = historical_data[k][undiscoverd_key]
+                else:
+                    if undiscoverd_key in modified_data[k]:
+                        del modified_data[k][undiscoverd_key]
     return modified_data
