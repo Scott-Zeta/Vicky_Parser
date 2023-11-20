@@ -26,10 +26,10 @@ class CustomJSONDecoder(json.JSONDecoder):
 
 def read_table(filename):
    with open(filename, "r",encoding='utf-8-sig') as f:
-       content = f.read()
+       content:str = f.read()
        return content
 
-def modify_for_json(content):
+def modify_for_json(content:str):
     linesArr = []
     lines = content.splitlines()
     arrayRegex = re.compile(r'\{.*?\}')
@@ -66,4 +66,9 @@ def modify_for_json(content):
         f.write(jsonfiedString)
         
     jsonData = json.loads(jsonfiedString,cls=CustomJSONDecoder)    
+    return jsonData
+
+def getJsonData(filepath:str):
+    content = read_table(filepath)
+    jsonData = modify_for_json(content)
     return jsonData

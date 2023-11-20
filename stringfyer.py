@@ -3,7 +3,7 @@ import re
 
 def stringfy(jsonData):
     # Stringfy the json data back to raw original table
-    s = json.dumps(jsonData, indent=4)
+    s:str = json.dumps(jsonData, indent=4)
     # Need additional Stringfy Implementation
     
     # put all elements in array in one line, and replace comma with space
