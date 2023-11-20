@@ -1,3 +1,4 @@
+import copy
 from typing import List
 
 arable_resources_list:List[str] = [
@@ -7,7 +8,7 @@ arable_resources_list:List[str] = [
     # Ranching
     "bg_livestock_ranches",
     #custmised ranching
-    "bg_cattle_ranches", "bg_sheep_ranches"
+    "bg_cattle_ranches", "bg_sheep_ranches",
     # Plantation
     "bg_coffee_plantations", "bg_cotton_plantations", "bg_silk_plantations",
     "bg_dye_plantations", "bg_opium_plantations", "bg_tea_plantations",
@@ -15,11 +16,11 @@ arable_resources_list:List[str] = [
     ]
 
 def migrate(historical_data, vanilla_data):
-    modified_data = vanilla_data
+    modified_data = copy.deepcopy(vanilla_data)
     # iterate the entire historacal_data, key -> state, value -> detail
     for k,v in historical_data.items():
         print(f"Processing {k}")
-        if(modified_data[k]):
+        if k in modified_data:
             #initial new capped_resources, arable_resources, arable_land for modfied_data
             mod_capped_resources = {}
             mod_arable_resources = set()
@@ -41,7 +42,7 @@ def migrate(historical_data, vanilla_data):
             # conver set to list for json output
             mod_arable_resources = list(mod_arable_resources)
             # assign moded value to modfied_data
-            modified_data["capped_resources"] = mod_capped_resources
-            modified_data["arable_resources"] = mod_arable_resources
-            modified_data["arable_land"] = mod_arable_land
+            modified_data[k]["capped_resources"] = mod_capped_resources
+            modified_data[k]["arable_resources"] = mod_arable_resources
+            modified_data[k]["arable_land"] = mod_arable_land
     return modified_data
