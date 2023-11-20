@@ -34,13 +34,16 @@ def modify_for_json(content:str):
     lines = content.splitlines()
     arrayRegex = re.compile(r'\{.*?\}')
     keyRegex = re.compile(r'^\s*([\w]+)\s*=', re.MULTILINE)
+    unquoteRegex = re.compile(r'\s+([\w]+)\s+')
     for i in range(len(lines)):
         line = lines[i].rstrip()
         
         # convert array to json array
         if arrayRegex.search(line):
             # this line deal with some customized array
-            line = line.replace('state_trait_new_world','"state_trait_new_world"')
+            # line = line.replace('state_trait_new_world','"state_trait_new_world"')
+            # line = line.replace('state_trait_rich_rubber','"state_trait_rich_rubber"')
+            line = unquoteRegex.sub(r' "\1" ',line)
             line = line.replace("{","[").replace("}","]")
             line = line.replace('" "', '", "')
         

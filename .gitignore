@@ -1,3 +1,9 @@
 # This is a cache of the compiled bytecode for the Python files in the directory.  It is safe to delete this folder, and it will be recreated the next time you run the program.  This is a common way to fix problems with Python programs.
 __pycache__/
 .DS_Store
+historical_resource/*
+!historical_resource/13_australasia.txt
+vanilla_resource/*
+!vanilla_resource/13_australasia.txt
+Output/map_data/state_regions/*
+!Output/map_data/state_regions/13_australasia.txt

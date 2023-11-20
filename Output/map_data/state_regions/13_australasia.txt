@@ -8,8 +8,8 @@ STATE_NEW_SOUTH_WALES = {
     farm = "x8B56F5"
     mine = "x24AEFA"
     wood = "x799B34"
-    arable_land = 215
-    arable_resources = { "bg_vineyard_plantations" "bg_livestock_ranches" "bg_wheat_farms" "bg_banana_plantations" }
+    arable_land = 210
+    arable_resources = { "bg_livestock_ranches" "bg_vineyard_plantations" "bg_banana_plantations" "bg_wheat_farms" }
     capped_resources = {
         bg_coal_mining = 32
         bg_lead_mining = 20
@@ -20,11 +20,7 @@ STATE_NEW_SOUTH_WALES = {
     resource = {
         type = "bg_gold_fields"
         depleted_type = "bg_gold_mining"
-        undiscovered_amount = 12
-    }
-    resource = {
-        type = "bg_oil_extraction"
-        undiscovered_amount = 10
+        undiscovered_amount = 11
     }
     naval_exit_id = 3122
 }
@@ -38,7 +34,7 @@ STATE_VICTORIA = {
     farm = "xCC9C60"
     mine = "xC04012"
     wood = "xC21B54"
-    arable_land = 155
+    arable_land = 150
     arable_resources = { "bg_livestock_ranches" "bg_wheat_farms" }
     capped_resources = {
         bg_coal_mining = 4
@@ -49,7 +45,7 @@ STATE_VICTORIA = {
     resource = {
         type = "bg_gold_fields"
         depleted_type = "bg_gold_mining"
-        undiscovered_amount = 6
+        undiscovered_amount = 18
     }
     naval_exit_id = 3122
 }
@@ -64,7 +60,7 @@ STATE_TASMANIA = {
     farm = "xEC439A"
     mine = "x05B74C"
     wood = "xBB312B"
-    arable_land = 30
+    arable_land = 28
     arable_resources = { "bg_livestock_ranches" "bg_wheat_farms" }
     capped_resources = {
         bg_iron_mining = 12
@@ -76,7 +72,7 @@ STATE_TASMANIA = {
     resource = {
         type = "bg_gold_fields"
         depleted_type = "bg_gold_mining"
-        undiscovered_amount = 6
+        undiscovered_amount = 5
     }
     naval_exit_id = 3122
 }
@@ -92,8 +88,8 @@ STATE_QUEENSLAND = {
     farm = "x0E58D6"
     mine = "x57456E"
     wood = "xA70E88"
-    arable_land = 152
-    arable_resources = { "bg_sugar_plantations" "bg_livestock_ranches" "bg_wheat_farms" "bg_banana_plantations" }
+    arable_land = 147
+    arable_resources = { "bg_livestock_ranches" "bg_sugar_plantations" "bg_banana_plantations" "bg_wheat_farms" }
     capped_resources = {
         bg_coal_mining = 28
         bg_lead_mining = 23
@@ -102,6 +98,11 @@ STATE_QUEENSLAND = {
         bg_fishing = 6
     }
     naval_exit_id = 3124
+    resource = {
+        type = "bg_gold_fields"
+        depleted_type = "bg_gold_mining"
+        undiscovered_amount = 13
+    }
 }
 
 STATE_SOUTH_AUSTRALIA = {
@@ -115,14 +116,19 @@ STATE_SOUTH_AUSTRALIA = {
     farm = "xC53983"
     mine = "x6F472E"
     wood = "xD471D4"
-    arable_land = 110
-    arable_resources = { "bg_vineyard_plantations" "bg_livestock_ranches" "bg_wheat_farms" }
+    arable_land = 105
+    arable_resources = { "bg_livestock_ranches" "bg_vineyard_plantations" "bg_wheat_farms" }
     capped_resources = {
         bg_coal_mining = 8
         bg_whaling = 3
         bg_fishing = 3
     }
     naval_exit_id = 3121
+    resource = {
+        type = "bg_gold_fields"
+        depleted_type = "bg_gold_mining"
+        undiscovered_amount = 5
+    }
 }
 
 STATE_WESTERN_AUSTRALIA = {
@@ -136,8 +142,8 @@ STATE_WESTERN_AUSTRALIA = {
     farm = "x98FA26"
     mine = "x8D829F"
     wood = "x74551C"
-    arable_land = 121
-    arable_resources = { "bg_vineyard_plantations" "bg_livestock_ranches" "bg_wheat_farms" }
+    arable_land = 119
+    arable_resources = { "bg_livestock_ranches" "bg_vineyard_plantations" "bg_wheat_farms" }
     capped_resources = {
         bg_lead_mining = 20
         bg_iron_mining = 30
@@ -148,7 +154,7 @@ STATE_WESTERN_AUSTRALIA = {
     resource = {
         type = "bg_gold_fields"
         depleted_type = "bg_gold_mining"
-        undiscovered_amount = 8
+        undiscovered_amount = 38
     }
     naval_exit_id = 3123
 }
@@ -185,18 +191,13 @@ STATE_NORTH_ISLAND = {
     farm = "xEBB583"
     mine = "x59DF28"
     wood = "x0AA01A"
-    arable_land = 28
+    arable_land = 26
     arable_resources = { "bg_livestock_ranches" "bg_wheat_farms" }
     capped_resources = {
         bg_iron_mining = 8
         bg_logging = 32
         bg_whaling = 3
         bg_fishing = 3
-    }
-    resource = {
-        type = "bg_gold_fields"
-        depleted_type = "bg_gold_mining"
-        undiscovered_amount = 4
     }
     naval_exit_id = 3122
 }
@@ -211,7 +212,7 @@ STATE_SOUTH_ISLAND = {
     farm = "x6A5DDE"
     mine = "xD040B0"
     wood = "x50F19B"
-    arable_land = 28
+    arable_land = 26
     arable_resources = { "bg_livestock_ranches" "bg_wheat_farms" }
     capped_resources = {
         bg_coal_mining = 12
@@ -222,7 +223,7 @@ STATE_SOUTH_ISLAND = {
     resource = {
         type = "bg_gold_fields"
         depleted_type = "bg_gold_mining"
-        undiscovered_amount = 6
+        undiscovered_amount = 21
     }
     naval_exit_id = 3122
 }
