@@ -8,14 +8,14 @@ STATE_NEW_SOUTH_WALES = {
     farm = "x8B56F5"
     mine = "x24AEFA"
     wood = "x799B34"
-    arable_land = 500
-    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_tea_plantations" "bg_sugar_plantations" "bg_opium_plantations" }
+    arable_land = 40
+    arable_resources = { "bg_wheat_farms" "bg_livestock_ranches" "bg_cotton_plantations" "bg_tea_plantations" "bg_sugar_plantations" "bg_vineyard_plantations" }
     capped_resources = {
         bg_coal_mining = 80
         bg_iron_mining = 36
         bg_logging = 7
         bg_whaling = 4
-        bg_fishing = 1
+        bg_fishing = 8
     }
     resource = {
         type = "bg_gold_fields"
