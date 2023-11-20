@@ -43,7 +43,8 @@ def migration(fileName = None):
             print(f"Error when processing file {fileName}: {e}")
                 
 def main():
-    migration("10_india.txt")
+    migration()
+    # migration("11_east_asia.txt")
 
 if __name__ == "__main__":
     main()

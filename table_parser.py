@@ -32,28 +32,39 @@ def read_table(filename):
 def modify_for_json(content:str):
     linesArr = []
     lines = content.splitlines()
+    # remove empty lines
+    lines = [line for line in lines if line.strip()]
     arrayRegex = re.compile(r'\{.*?\}')
     keyRegex = re.compile(r'^\s*([\w]+)\s*=', re.MULTILINE)
-    unquoteRegex = re.compile(r'\s+([\w]+)\s+')
+    unquote_element_Regex = re.compile(r'\s+([\w]+)')
+    unquoted_value_regex = re.compile(r'(\s*=\s*)((?=\w*\D)\w+)')
+    hash_comment_regex = re.compile(r'\s*#.*')
     for i in range(len(lines)):
         line = lines[i].rstrip()
+        
+        # remove comments line
+        if line.lstrip().startswith("#"):
+            continue
+        # remove in line comments
+        line = re.sub(hash_comment_regex,'',line)
         
         # convert array to json array
         if arrayRegex.search(line):
             # this line deal with some customized array
             # line = line.replace('state_trait_new_world','"state_trait_new_world"')
             # line = line.replace('state_trait_rich_rubber','"state_trait_rich_rubber"')
-            line = unquoteRegex.sub(r' "\1" ',line)
+            line = unquote_element_Regex.sub(r' "\1"',line)
             line = line.replace("{","[").replace("}","]")
-            line = line.replace('" "', '", "')
+            line = re.sub(r'"\s+"','", "',line)
         
         # convert key to json key
         key = keyRegex.findall(line)
         if key:
             line = line.replace(key[0],'"' + key[0] + '"')
+            line = re.sub(unquoted_value_regex,r'\1"\2"',line)
         
         # add comma to the end of element except the last one
-        is_last_in_block = i + 1 < len(lines) and i + 2 < len(lines) and lines[i + 1].strip() != '}'
+        is_last_in_block = i + 1 < len(lines) and lines[i + 1].strip() != '}'
         if line and not line.endswith("{") and is_last_in_block:
             line += ','
         

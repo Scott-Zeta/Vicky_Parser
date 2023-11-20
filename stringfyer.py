@@ -36,6 +36,9 @@ def stringfy(jsonData):
     
     # remove root level {}, re construct the string
     lines = s.strip().split('\n')
+    for i in range(len(lines)):
+        if lines[i].lstrip().startswith('prime_land'):
+            lines[i] = lines[i].replace('"','')
     lines[-1] = '\n'
     s = '\n'.join(lines[2:])
     

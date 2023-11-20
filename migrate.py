@@ -29,7 +29,7 @@ def migrate(historical_data, vanilla_data):
     modified_data = copy.deepcopy(vanilla_data)
     # iterate the entire historacal_data, key -> state, value -> detail
     for k,v in historical_data.items():
-        print(f"Processing {k}")
+        # print(f"Processing {k}")
         if k in modified_data:
             #initial new capped_resources, arable_resources, arable_land for modfied_data
             mod_capped_resources = {}
