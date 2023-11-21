@@ -59,7 +59,7 @@ def migrate(historical_data, vanilla_data):
             # assign moded value to modfied_data
             modified_data[k]["capped_resources"] = mod_capped_resources
             modified_data[k]["arable_resources"] = mod_arable_resources
-            modified_data[k]["arable_land"] = mod_arable_land
+            modified_data[k]["arable_land"] = math.ceil(mod_arable_land * 0.96)
             
             # assign the resources(undiscovered), remove the non-exist resources
             for undiscoverd_key in undiscovered_resources_key_list:
