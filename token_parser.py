@@ -41,13 +41,30 @@ def token_parser(tokens):
     parsed_data, _ = process_block(token_list)
     return parsed_data
 
+def convert_str_to_number(obj):
+    if isinstance(obj, dict):
+        return {k: convert_str_to_number(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_str_to_number(v) for v in obj]
+    elif isinstance(obj, str):
+        try:
+            return int(obj)
+        except ValueError:
+            try:
+                return float(obj)
+            except ValueError:
+                return obj
+    else:
+        return obj
+    
 def main():
-    with open("./13_australasia.txt", "r", encoding='utf-8-sig') as f:
+    with open("./research/00_buy_packages.txt", "r", encoding='utf-8-sig') as f:
         tokens = tokenizer(f)
-        # tokens.append('}')
-        # tokenstack = ['root','=', '{']
         data = token_parser(tokens)
+        data = convert_str_to_number(data)
         json_string = json.dumps(data, indent=4)
         print(json_string)
+        with open("./out.txt", "w", encoding='utf-8-sig') as f:
+            f.write(json_string)
 if __name__ == "__main__":
     main()
