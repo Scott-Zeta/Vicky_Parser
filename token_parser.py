@@ -1,32 +1,53 @@
 from tokenizer import tokenizer
+import json
+
 def token_parser(tokens):
-    def process_block(token_iter):
+    def process_block(token_list, start_index=0):
         block = []
         key = None
-        
-        for token in token_iter:
-            if token == '=' or token == ':':
+        i = start_index
+
+        while i < len(token_list):
+            token = token_list[i]
+            i += 1
+
+            if token in ('=', ':'):
                 continue
             if token == '{':
-                value = process_block(token_iter)
-                if key is not None:
-                    block.append({key: value})
-                    key = None
-            elif token == '}':
-                return block
-            elif key is None:
-                key = token
-                # check the next token is operator or not
-                # if not, it is a value inside the list
-            else:
-                block.append({key:token})
+                nested_block, i = process_block(token_list, i)
+                block.append({key: nested_block})
                 key = None
-        return block 
-    return process_block(iter(tokens))
+            elif token == '}':
+                return block, i
+            elif key is None:
+                # key = token
+                # Peek ahead
+                if i < len(token_list) and token_list[i] not in ('{', '=', ':', '}'):
+                    # values = [token]
+                    block.append(token)
+                    while i < len(token_list) and token_list[i] not in ('{', '=', ':', '}'):
+                        block.append(token_list[i])
+                        i += 1
+                    # block.append(values)
+                    key = None
+                else:
+                    key = token
+            else:
+                block.append({key: token})
+                key = None
+        return block, i
+
+    token_list = tokens  # Convert iterator to list for easier peeking
+    parsed_data, _ = process_block(token_list)
+    return parsed_data
+
 def main():
-    with open("./vanilla_resource/13_australasia.txt", "r", encoding='utf-8-sig') as f:
+    with open("./13_australasia.txt", "r", encoding='utf-8-sig') as f:
         tokens = tokenizer(f)
+        # tokens.append('}')
+        # tokenstack = ['root','=', '{']
         data = token_parser(tokens)
-        print(data)
+        json_string = json.dumps(data, indent=4)
+        print(json_string)
 if __name__ == "__main__":
     main()
