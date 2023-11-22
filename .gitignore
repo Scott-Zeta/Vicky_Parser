@@ -7,3 +7,4 @@ vanilla_resource/*
 !vanilla_resource/13_australasia.txt
 Output/map_data/state_regions/*
 !Output/map_data/state_regions/13_australasia.txt
+research/*

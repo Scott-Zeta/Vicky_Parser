@@ -9,7 +9,7 @@
     "mine" : "x08673B",
     "wood" : "xCAB9F2",
     "arable_land" : 130,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_coal_mining" : 6,
         "bg_iron_mining" : 22,
@@ -46,7 +46,7 @@
     "mine" : "xC0B7FD",
     "wood" : "xC65120",
     "arable_land" : 33,
- "arable_resources" : [ "bg_rice_farms", "bg_livestock_ranches", "bg_cotton_plantations", "bg_dye_plantations" ],
+ "arable_resources" : [ "bg_cotton_plantations", "bg_dye_plantations", "bg_rice_farms", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_logging" : 40,
         "bg_fishing" : 6,
@@ -80,7 +80,7 @@
     "mine" : "x1C7417",
     "wood" : "x6D4CDF",
     "arable_land" : 30,
- "arable_resources" : [ "bg_rice_farms", "bg_livestock_ranches", "bg_tobacco_plantations", "bg_dye_plantations" ],
+ "arable_resources" : [ "bg_dye_plantations", "bg_rice_farms", "bg_tobacco_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_logging" : 44,
         "bg_fishing" : 10,
@@ -109,7 +109,7 @@
     "mine" : "xAC440F",
     "wood" : "xF6BB4E",
     "arable_land" : 38,
- "arable_resources" : [ "bg_rice_farms", "bg_livestock_ranches", "bg_tobacco_plantations", "bg_dye_plantations" ],
+ "arable_resources" : [ "bg_dye_plantations", "bg_rice_farms", "bg_tobacco_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_coal_mining" : 16,
         "bg_logging" : 46,
@@ -142,7 +142,7 @@
     "mine" : "x5CC6B6",
     "wood" : "xA0DFEF",
     "arable_land" : 318,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_banana_plantations", "bg_dye_plantations", "bg_cotton_plantations", "bg_coffee_plantations", "bg_sugar_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_cotton_plantations", "bg_sugar_plantations", "bg_banana_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_sulfur_mining" : 26,
         "bg_logging" : 32,
@@ -170,7 +170,7 @@
     "mine" : "xEF70EC",
     "wood" : "xC226AF",
     "arable_land" : 313,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_dye_plantations", "bg_cotton_plantations", "bg_tobacco_plantations", "bg_coffee_plantations", "bg_sugar_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_tobacco_plantations", "bg_cotton_plantations", "bg_sugar_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_sulfur_mining" : 25,
         "bg_logging" : 28,
@@ -193,7 +193,7 @@
     "mine" : "x727A46",
     "wood" : "x143969",
     "arable_land" : 313,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_banana_plantations", "bg_dye_plantations", "bg_cotton_plantations", "bg_coffee_plantations", "bg_sugar_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_cotton_plantations", "bg_sugar_plantations", "bg_banana_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_sulfur_mining" : 25,
         "bg_iron_mining" : 19,
@@ -217,7 +217,7 @@
     "mine" : "x8B7A14",
     "wood" : "xD3A66E",
     "arable_land" : 80,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_dye_plantations", "bg_coffee_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_coffee_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_logging" : 42,
         "bg_fishing" : 8
@@ -242,7 +242,7 @@
     "mine" : "x0D0BEB",
     "wood" : "xDBE794",
     "arable_land" : 87,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_dye_plantations", "bg_coffee_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_coffee_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_coal_mining" : 32,
         "bg_logging" : 40,
@@ -268,7 +268,7 @@
     "mine" : "xEB815E",
     "wood" : "x07B7F0",
     "arable_land" : 85,
- "arable_resources" : [ "bg_rice_farms", "bg_tea_plantations", "bg_dye_plantations", "bg_tobacco_plantations", "bg_coffee_plantations", "bg_livestock_ranches", "bg_opium_plantations" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_tobacco_plantations", "bg_opium_plantations", "bg_dye_plantations", "bg_tea_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_logging" : 18,
         "bg_fishing" : 5
@@ -290,7 +290,7 @@
     "mine" : "xAFF001",
     "wood" : "xC6416E",
     "arable_land" : 47,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_coffee_plantations", "bg_livestock_ranches" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_iron_mining" : 6,
         "bg_coal_mining" : 12,
@@ -313,7 +313,7 @@
     "mine" : "xB346EB",
     "wood" : "xD986F1",
     "arable_land" : 27,
- "arable_resources" : [ "bg_rice_farms", "bg_dye_plantations", "bg_banana_plantations", "bg_coffee_plantations" ],
+ "arable_resources" : [ "bg_banana_plantations", "bg_coffee_plantations", "bg_rice_farms", "bg_dye_plantations" ],
     "capped_resources" : {
         "bg_logging" : 8,
         "bg_fishing" : 6
@@ -335,7 +335,7 @@
     "mine" : "x5585BD",
     "wood" : "xF0B767",
     "arable_land" : 32,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_tobacco_plantations", "bg_coffee_plantations" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_tobacco_plantations" ],
     "capped_resources" : {
         "bg_coal_mining" : 8,
         "bg_logging" : 28,
@@ -358,7 +358,7 @@
     "mine" : "x26A798",
     "wood" : "x9ACD2A",
     "arable_land" : 68,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_coffee_plantations", "bg_livestock_ranches" ],
+ "arable_resources" : [ "bg_coffee_plantations", "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_iron_mining" : 6,
         "bg_logging" : 52,
@@ -381,7 +381,7 @@
     "mine" : "x900090",
     "wood" : "x3CCE91",
     "arable_land" : 32,
- "arable_resources" : [ "bg_rice_farms", "bg_livestock_ranches", "bg_banana_plantations", "bg_dye_plantations" ],
+ "arable_resources" : [ "bg_banana_plantations", "bg_dye_plantations", "bg_rice_farms", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_logging" : 10,
         "bg_sulfur_mining" : 25,
@@ -404,7 +404,7 @@
     "mine" : "x4C67A7",
     "wood" : "xCAFE73",
     "arable_land" : 71,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_sugar_plantations", "bg_livestock_ranches" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_sugar_plantations", "bg_banana_plantations", "bg_dye_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_iron_mining" : 16,
         "bg_coal_mining" : 19,
@@ -428,7 +428,7 @@
     "mine" : "x33B5F8",
     "wood" : "xEB310E",
     "arable_land" : 111,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_tobacco_plantations", "bg_coffee_plantations", "bg_sugar_plantations", "bg_livestock_ranches" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_coffee_plantations", "bg_sugar_plantations", "bg_banana_plantations", "bg_dye_plantations", "bg_tobacco_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_iron_mining" : 35,
         "bg_logging" : 24,
@@ -450,7 +450,7 @@
     "mine" : "x46EA60",
     "wood" : "x05FD19",
     "arable_land" : 87,
- "arable_resources" : [ "bg_rice_farms", "bg_banana_plantations", "bg_dye_plantations", "bg_sugar_plantations", "bg_livestock_ranches" ],
+ "arable_resources" : [ "bg_rice_farms", "bg_sugar_plantations", "bg_banana_plantations", "bg_dye_plantations", "bg_livestock_ranches" ],
     "capped_resources" : {
         "bg_coal_mining" : 19,
         "bg_lead_mining" : 17,

@@ -17,3 +17,8 @@ I imported the vanilla game stat_region setting in Au, and did some modification
 Further development is depended on my demand.
 
 ## Perhaps doing the work manually is faster than "Automation". I really hope I am not wasting time and looks like a jester.
+
+# Aftermath
+
+I saw other people's code and reminds me the language parser I built in the University, which I totally forget. (Not my fault, I totally can not understand that when I was taking that course)
+So I would like to rewrite the code to follow more generic parser's concept.
