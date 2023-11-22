@@ -2,10 +2,10 @@
 __pycache__/
 .DS_Store
 Archive/historical_resource/*
-!historical_resource/13_australasia.txt
+historical_resource/*
 Archive/vanilla_resource/*
-!vanilla_resource/13_australasia.txt
+vanilla_resource/
 Archive/Output/map_data/state_regions/*
-!Output/map_data/state_regions/13_australasia.txt
+Output/*
 Archive/debugOutput/*
 research/*
