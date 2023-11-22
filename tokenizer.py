@@ -63,8 +63,6 @@ def main():
     with open("./vanilla_resource/13_australasia.txt", "r", encoding='utf-8-sig') as f:
         token = tokenizer(f)
         print(token)
-    # for k, v in token.items():
-    #     print(k)
-    # print(token["wealth_1"])
+        
 if __name__ == "__main__":
     main()
