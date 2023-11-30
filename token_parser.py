@@ -60,6 +60,7 @@ def convert_str_to_number(obj):
 def flatten_single_pair_dicts(lst):
     flattened = {}
     for item in lst:
+        # print(f'item: {item}')
         if isinstance(item, dict) and len(item) == 1:
             key, value = next(iter(item.items()))
             original_key = key
@@ -69,10 +70,17 @@ def flatten_single_pair_dicts(lst):
                 while key in flattened:
                     count += 1
                     key = f"{original_key}_Dup{count}"
+            if isinstance(value, list):
+                # print(value)
+                newValue = flatten_single_pair_dicts(value)
+                if newValue:
+                    value = newValue
             flattened[key] = value
-        else:
-            # Handle more complex structures appropriately
+        elif isinstance(item, dict):
             flattened.update(item)
+        else:
+            # print(f'item: {item}')
+            pass
     return flattened
     
 def main():
@@ -86,7 +94,7 @@ def main():
         processed_data = {key: flatten_single_pair_dicts(value) for key, value in jsondata[0].items()}
 
         s = json.dumps(processed_data, indent=4)
-        print(s)
+        # print(s)
         # for k, v in jsondata[0].items():
         #     print(k, v)
         with open("./out.txt", "w", encoding='utf-8-sig') as f:
