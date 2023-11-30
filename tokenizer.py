@@ -5,6 +5,12 @@ def tokenizer(f):
         tokens = [""]
         quote_flag = False
         
+        def addToken(char, tokens):
+            if char == '"':
+                tokens[-1] += "'"
+            else:
+                tokens[-1] += char
+            return tokens
         def parse_quote(tokens, char, quote_flag):
             # if no quote flag, and tokens[-1] is not empty,
             # start a new token
@@ -13,7 +19,8 @@ def tokenizer(f):
             # if this is the start quote, flag on, add it
             # if this is the end quote, flag off, add it
             quote_flag = not quote_flag
-            tokens[-1] += char
+            # tokens[-1] += char
+            tokens = addToken(char, tokens)
             return quote_flag
             
         for line in lines:
@@ -34,7 +41,7 @@ def tokenizer(f):
                                 tokens.append(char)
                                 tokens.append("")
                             else:
-                                tokens[-1] += char
+                                tokens = addToken(char, tokens)
                                 tokens.append("")
                         # space, tab, newline case, 
                         # all count as the end of the current token
@@ -43,10 +50,10 @@ def tokenizer(f):
                                 tokens.append("")
                         # other char, add to the current token
                         else:
-                            tokens[-1] += char
+                            tokens = addToken(char, tokens)
                     # case inside the quote, add them all
                     else:
-                        tokens[-1] += char
+                        tokens = addToken(char, tokens)
                 except Exception as e:
                     print(f"Error on char {char} in line {line}")
                     print(f"Current tokens: {tokens}")

@@ -84,19 +84,24 @@ def flatten_single_pair_dicts(lst):
     return flattened
     
 def main():
-    with open("./13_australasia.txt", "r", encoding='utf-8-sig') as f:
+    with open("./vanilla_resource/13_australasia.txt", "r", encoding='utf-8-sig') as f:
         tokens = tokenizer(f)
+        print(tokens)
         data = token_parser(tokens)
         data = convert_str_to_number(data)
         json_string = json.dumps(data, indent=4)
         # print(json_string)
-        jsondata = json.loads(json_string)
-        processed_data = {key: flatten_single_pair_dicts(value) for key, value in jsondata[0].items()}
-
+        crudeJson = json.loads(json_string)
+        processed_data = {}
+        for n in crudeJson:
+            for k, v in n.items():
+                    processed_data[k] = flatten_single_pair_dicts(v)
+                    
+        # for k,v in processed_data.items():
+        #     if v["arable_resources"]:
+        #         print(v["arable_resources"])
         s = json.dumps(processed_data, indent=4)
         # print(s)
-        # for k, v in jsondata[0].items():
-        #     print(k, v)
         with open("./out.txt", "w", encoding='utf-8-sig') as f:
             f.write(s)
 if __name__ == "__main__":
