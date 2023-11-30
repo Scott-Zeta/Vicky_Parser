@@ -14,6 +14,10 @@ def stringfy(s):
     arrayRegex = r'\[\s+([^]]+?)\s+\]'
     s = re.sub(arrayRegex, lambda m: '[' + m.group(1).replace('\n', '').replace('  ', '') + ']', s)
     
+    # restore the duplicate key name
+    keyRegex = re.compile(r'("\s*\w+)(_Dup\d+)(\s*"\s*:)')
+    s = keyRegex.sub(r'\1\3',s)
+    
     # #unquote the key
     s = s.replace('","', '" "')
     s = s.replace('"','')
