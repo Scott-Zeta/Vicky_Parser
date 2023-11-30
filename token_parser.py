@@ -18,15 +18,17 @@ def token_parser(tokens):
                 block.append({key: nested_block})
                 key = None
             elif token == '}':
+                if key is not None:  # Handle single element arrays
+                    block.append(key)
                 return block, i
             elif key is None:
-                # key = token
                 # Peek ahead
                 if i < len(token_list) and token_list[i] not in ('{', '=', ':', '}'):
-                    # values = [token]
                     block.append(token)
+                    # print(token)
                     while i < len(token_list) and token_list[i] not in ('{', '=', ':', '}'):
                         block.append(token_list[i])
+                        # print(token_list[i])
                         i += 1
                     # block.append(values)
                     key = None
@@ -88,6 +90,7 @@ def getData(path:str):
         with open(path, "r", encoding='utf-8-sig') as f:
             tokens = tokenizer(f)
             data = token_parser(tokens)
+            # print(data)
             data = convert_str_to_number(data)
             json_string = json.dumps(data, indent=4)
             # print(json_string)
@@ -100,4 +103,9 @@ def getData(path:str):
     except Exception as e:
         print(f"Error on path {path}")
         print(e)
+
+def main():
+    getData('./vanilla_resource/00_west_europe.txt')
     
+if __name__ == "__main__":
+    main()
