@@ -83,10 +83,9 @@ def flatten_single_pair_dicts(lst):
             pass
     return flattened
     
-def main():
-    with open("./vanilla_resource/13_australasia.txt", "r", encoding='utf-8-sig') as f:
+def getData(path:str):
+    with open(path, "r", encoding='utf-8-sig') as f:
         tokens = tokenizer(f)
-        print(tokens)
         data = token_parser(tokens)
         data = convert_str_to_number(data)
         json_string = json.dumps(data, indent=4)
@@ -96,13 +95,5 @@ def main():
         for n in crudeJson:
             for k, v in n.items():
                     processed_data[k] = flatten_single_pair_dicts(v)
-                    
-        # for k,v in processed_data.items():
-        #     if v["arable_resources"]:
-        #         print(v["arable_resources"])
-        s = json.dumps(processed_data, indent=4)
-        # print(s)
-        with open("./out.txt", "w", encoding='utf-8-sig') as f:
-            f.write(s)
-if __name__ == "__main__":
-    main()
+        return processed_data
+    
