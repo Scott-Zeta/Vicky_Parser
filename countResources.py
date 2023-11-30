@@ -32,11 +32,11 @@ def countResource(data):
     alter_arable_land = 0
     for continent_key,continent_value in data.items():
         for region_key, region_value in continent_value.items():
-            # print(f"Processing {continent_key}, {region_key}")
+            print(f"Processing {continent_key}, {region_key}")
             # deal with arable_land
             total['arable_land'] = total.get('arable_land', 0) + region_value.get('arable_land', 0)
             
-            if 'capped_resources' in region_value:
+            if 'capped_resources' in region_value and region_value['capped_resources']:
                 for capped_resourceKey, capped_resourceValue in region_value['capped_resources'].items():
                     total[capped_resourceKey] = total.get(capped_resourceKey, 0) + capped_resourceValue
                     if capped_resourceKey in arable_resources_list:

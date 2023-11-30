@@ -43,9 +43,9 @@ logging_resource_list = ["bg_logging"]
 oil_resource_list = ["bg_oil_extraction"]
 
 # scale use to adjust the global total production back to vanilla game setting
-scale = {"arable": 0.9, "bg_iron_mining": 2.18, "bg_lead_mining": 1.74, "bg_logging": 0.41, 
-         "'bg_oil_extraction'": 0.54, "bg_coal_mining":2.11, "bg_fishing":0.86, "bg_sulfur_mining": 2.13,
-         "bg_gold_mining": 0.51, "'bg_rubber'": 1, "bg_whaling": 0.92, "'bg_gold_fields'": 0.43}
+scale = {"arable": 0.9, "bg_iron_mining": 2.1, "bg_lead_mining": 1.7, "bg_logging": 0.4, 
+         "'bg_oil_extraction'": 0.5, "bg_coal_mining":2.1, "bg_fishing":0.8, "bg_sulfur_mining": 2.1,
+         "bg_gold_mining": 0.5, "'bg_rubber'": 1, "bg_whaling": 0.9, "'bg_gold_fields'": 0.4}
 
 def migrate(historical_data, vanilla_data):
     for continent_key,continent_value in historical_data.items():
@@ -62,7 +62,7 @@ def migrate(historical_data, vanilla_data):
                     #deal with two special custmized ranche cases
                     if resource == "bg_cattle_ranches" or resource == "bg_sheep_ranches":
                         resource = "bg_livestock_ranches"
-                    mod_arable_resources.add(resource)
+                    mod_arable_resources.add(f"'{resource}'")
                     # the number add to sum of mod_arable_land
                     mod_arable_land += math.ceil(amount * scale.get('arable', 1) * argriculture_index * global_index)
                 elif resource in mining_resources_list:
@@ -81,26 +81,22 @@ def migrate(historical_data, vanilla_data):
             vanilla_data[continent_key][region_key]["arable_land"] = mod_arable_land
             
             ## Deal with undiscovered resources
-            undisvocered_key = 'resource'
-            i = 1
-            while undisvocered_key in vanilla_data[continent_key][region_key]:
-                del vanilla_data[continent_key][region_key][undisvocered_key]
-                undisvocered_key =  f'resource_Dup{i}'
-                i += 1
-                
-            undisvocered_key = 'resource'
-            i = 1
-            while undisvocered_key in region_value:
-                mod_undiscovered_resources = region_value[undisvocered_key]
-                resource = region_value[undisvocered_key]['type']
-                for num in ['undiscovered_amount', 'discovered_amount']:
-                    if resource in gold_resources_list:
-                        mod_undiscovered_resources[num] = math.ceil(region_value[undisvocered_key].get(num, 0) * scale.get(resource, 1) * gold_index * global_index)
-                    elif resource in oil_resource_list:
-                        mod_undiscovered_resources[num] = math.ceil(region_value[undisvocered_key].get(num, 0) * scale.get(resource, 1) * oil_index * global_index)
-                vanilla_data[continent_key][region_key][undisvocered_key] = mod_undiscovered_resources
-                undisvocered_key =  f'resource_Dup{i}'
-                i += 1
+            # assign the resources(undiscovered), remove the non-exist resources
+            for undiscoverd_key in ["resource", "resource_Dup1", "resource_Dup2", "resource_Dup3"]:
+                if undiscoverd_key in region_value:
+                    vanilla_data[continent_key][region_key][undiscoverd_key] = region_value[undiscoverd_key]
+                    resource = vanilla_data[continent_key][region_key][undiscoverd_key]
+                    for num in ['undiscovered_amount', 'discovered_amount']:
+                        amount = resource.get(num, 0)
+                        if resource['type'] in gold_resources_list:
+                            resource[num] = math.ceil(amount * scale.get(resource['type'], 1) * gold_index * global_index)
+                        elif resource['type'] in oil_resource_list:
+                            resource[num] = math.ceil(amount * scale.get(resource['type'], 1) * oil_index * global_index)
+                        else:
+                            resource[num] = math.ceil(amount * scale.get(resource['type'], 1) * global_index)
+                else:
+                    if undiscoverd_key in vanilla_data[continent_key][region_key]:
+                        del vanilla_data[continent_key][region_key][undiscoverd_key]
     return vanilla_data
 
 def main():

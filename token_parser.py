@@ -105,7 +105,7 @@ def getData(path:str):
         print(e)
 
 def main():
-    getData('./vanilla_resource/00_west_europe.txt')
+    print(getData('./Output/map_data/state_regions/13_australasia.txt'))
     
 if __name__ == "__main__":
     main()
