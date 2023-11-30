@@ -58,13 +58,13 @@ def countResource(data):
                 total['arable_land'] = alter_arable_land
     return total
 
-def outputComparison(dic1, dic2):
+def outputComparison(dic1, dic2, dic3):
     df1 = pd.DataFrame(list(dic1.items()), columns=['Category', 'Vanilla'])
     df2 = pd.DataFrame(list(dic2.items()), columns=['Category', 'Historical'])
-
+    df3 = pd.DataFrame(list(dic3.items()), columns=['Category', 'Modified'])
     # Merging the DataFrames on 'Category'
     merged_df = pd.merge(df1, df2, on='Category', how='outer')
-
+    merged_df = pd.merge(merged_df, df3, on='Category', how='outer')
     # Fill missing values with 0
     merged_df.fillna(0, inplace=True)
     merged_df.to_csv('./comparison.csv', index=False)
@@ -72,12 +72,15 @@ def outputComparison(dic1, dic2):
 def main():
     vanilla_Iterator = FileIterator(vanilla_path, ['.txt'])
     historical_Iterator = FileIterator(historical_path, ['.txt'])
+    modified_Iterator = FileIterator(output_path, ['.txt'])
     vanilla_data = vanilla_Iterator.iterate_files(getData)
     historical_data = historical_Iterator.iterate_files(getData)
+    modified_data = modified_Iterator.iterate_files(getData)
     dic1 = countResource(vanilla_data)
     dic2 = countResource(historical_data)
+    dic3 = countResource(modified_data)
     # print(dic2)
-    outputComparison(dic1, dic2)
+    outputComparison(dic1, dic2, dic3)
     
     # s = json.dumps(vanilla_data['08_middle_east.txt'], indent=4)
     # with open('./out.txt', 'w', encoding='utf-8-sig') as f:
