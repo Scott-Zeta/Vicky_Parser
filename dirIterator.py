@@ -16,12 +16,15 @@ class FileIterator:
         return not any(excluded_dir in dir_path.parts for excluded_dir in self.exclude_dirs)
 
     def iterate_files(self, file_processor):
+        result = {}
         for dirpath, dirs, files in os.walk(self.root_dir):
             dirs[:] = [d for d in dirs if self._is_valid_dir(Path(dirpath) / d)]
             for filename in files:
                 file_path = Path(dirpath) / filename
                 if self._is_valid_file(file_path):
                     try:
-                        file_processor(file_path)
+                        jsondata = file_processor(file_path)
+                        result[file_path.name] = jsondata
                     except Exception as e:
                         print(f"Error processing {file_path}: {e}")
+        return result
