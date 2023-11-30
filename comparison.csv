@@ -2,12 +2,15 @@ Category,Vanilla,Historical
 bg_iron_mining,7120.0,3254
 bg_lead_mining,2821.0,1621
 bg_logging,6293.0,15085
+'bg_oil_extraction',2680.0,4910
 bg_coal_mining,9907.0,4685
 bg_fishing,2675.0,3085
 bg_sulfur_mining,3207.0,1501
 bg_monuments,11.0,11
 bg_gold_mining,44.0,86
+'bg_rubber',1931.0,1917
 bg_whaling,259.0,279
+'bg_gold_fields',258.0,587
 bg_wheat_farms,0.0,5246
 bg_rice_farms,0.0,3339
 bg_cattle_ranches,0.0,8451
