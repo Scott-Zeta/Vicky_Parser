@@ -237,6 +237,17 @@
         ],
         "resource": [
             {
+                "type": "\"bg_gold_fields\""
+            },
+            {
+                "depleted_type": "\"bg_gold_mining\""
+            },
+            {
+                "undiscovered_amount": 12
+            }
+        ],
+        "resource_Dup1": [
+            {
                 "type": "\"bg_oil_extraction\""
             },
             {

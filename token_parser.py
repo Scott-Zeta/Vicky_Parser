@@ -62,6 +62,13 @@ def flatten_single_pair_dicts(lst):
     for item in lst:
         if isinstance(item, dict) and len(item) == 1:
             key, value = next(iter(item.items()))
+            original_key = key
+            if key in flattened:
+                count = 1
+                key = f"{original_key}_Dup{count}"
+                while key in flattened:
+                    count += 1
+                    key = f"{original_key}_Dup{count}"
             flattened[key] = value
         else:
             # Handle more complex structures appropriately
