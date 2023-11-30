@@ -14,18 +14,18 @@ def stringfy(s):
     arrayRegex = r'\[\s+([^]]+?)\s+\]'
     s = re.sub(arrayRegex, lambda m: '[' + m.group(1).replace('\n', '').replace('  ', '') + ']', s)
     
-    #unquote the key
+    # #unquote the key
+    s = s.replace('","', '" "')
     s = s.replace('"','')
     s = s.replace("'",'"')
     
-    # replace [] with {}
+    # # replace [] with {}
     s = s.replace('[','{ ').replace(']',' }')
     
-    # replace all : with =
+    # # replace all : with =
     s = s.replace(':',' =')
     
-    # remove all , 
-    s = s.replace('","', '" "')
+    # # remove all , 
     s = s.replace(',','')
     
     # indentation move left
