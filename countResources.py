@@ -8,18 +8,40 @@ historical_path = Path('./historical_resource')
 vanilla_path = Path('./vanilla_resource')
 output_path = Path('./Output/map_data/state_regions')
 
+
+arable_resources_list = [
+    # Agriculture
+    "bg_rye_farms", "bg_wheat_farms", "bg_rice_farms", 
+    "bg_maize_farms", "bg_millet_farms", "bg_vineyard_plantations",
+    # Ranching
+    "bg_livestock_ranches",
+    #custmised ranching
+    "bg_cattle_ranches", "bg_sheep_ranches",
+    # Plantation
+    "bg_coffee_plantations", "bg_cotton_plantations", "bg_silk_plantations",
+    "bg_dye_plantations", "bg_opium_plantations", "bg_tea_plantations",
+    "bg_tobacco_plantations", "bg_sugar_plantations", "bg_banana_plantations"
+    ]
+
 def printFileName(file_path):
     print(file_path.name)
 
 def countResource(data):
     total = {}
+    flag = False
+    alter_arable_land = 0
     for continent_key,continent_value in data.items():
         for region_key, region_value in continent_value.items():
             # print(f"Processing {continent_key}, {region_key}")
+            # deal with arable_land
+            total['arable_land'] = total.get('arable_land', 0) + region_value.get('arable_land', 0)
+            
             if 'capped_resources' in region_value:
                 for capped_resourceKey, capped_resourceValue in region_value['capped_resources'].items():
                     total[capped_resourceKey] = total.get(capped_resourceKey, 0) + capped_resourceValue
-
+                    if capped_resourceKey in arable_resources_list:
+                        alter_arable_land += capped_resourceValue
+                        flag = True
             # deal with undiscovered resources
             undisvocered_key = 'resource'
             i = 1
@@ -31,6 +53,9 @@ def countResource(data):
                     total[key] = total.get(key, 0) + amount
                 undisvocered_key =  f'resource_Dup{i}'
                 i += 1
+            
+            if flag:
+                total['arable_land'] = alter_arable_land
     return total
 
 def outputComparison(dic1, dic2):

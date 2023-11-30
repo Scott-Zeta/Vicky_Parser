@@ -84,16 +84,20 @@ def flatten_single_pair_dicts(lst):
     return flattened
     
 def getData(path:str):
-    with open(path, "r", encoding='utf-8-sig') as f:
-        tokens = tokenizer(f)
-        data = token_parser(tokens)
-        data = convert_str_to_number(data)
-        json_string = json.dumps(data, indent=4)
-        # print(json_string)
-        crudeJson = json.loads(json_string)
-        processed_data = {}
-        for n in crudeJson:
-            for k, v in n.items():
-                    processed_data[k] = flatten_single_pair_dicts(v)
-        return processed_data
+    try:
+        with open(path, "r", encoding='utf-8-sig') as f:
+            tokens = tokenizer(f)
+            data = token_parser(tokens)
+            data = convert_str_to_number(data)
+            json_string = json.dumps(data, indent=4)
+            # print(json_string)
+            crudeJson = json.loads(json_string)
+            processed_data = {}
+            for n in crudeJson:
+                for k, v in n.items():
+                        processed_data[k] = flatten_single_pair_dicts(v)
+            return processed_data
+    except Exception as e:
+        print(f"Error on path {path}")
+        print(e)
     
