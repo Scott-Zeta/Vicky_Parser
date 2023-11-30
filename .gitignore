@@ -2,10 +2,10 @@
 __pycache__/
 .DS_Store
 Archive/historical_resource/*
-historical_resource/*
+historical_resource/
 Archive/vanilla_resource/*
 vanilla_resource/
 Archive/Output/map_data/state_regions/*
-Output/*
+Output/
 Archive/debugOutput/*
 research/*

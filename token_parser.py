@@ -57,14 +57,32 @@ def convert_str_to_number(obj):
     else:
         return obj
     
+def flatten_single_pair_dicts(lst):
+    flattened = {}
+    for item in lst:
+        if isinstance(item, dict) and len(item) == 1:
+            key, value = next(iter(item.items()))
+            flattened[key] = value
+        else:
+            # Handle more complex structures appropriately
+            flattened.update(item)
+    return flattened
+    
 def main():
-    with open("./research/00_buy_packages.txt", "r", encoding='utf-8-sig') as f:
+    with open("./13_australasia.txt", "r", encoding='utf-8-sig') as f:
         tokens = tokenizer(f)
         data = token_parser(tokens)
         data = convert_str_to_number(data)
         json_string = json.dumps(data, indent=4)
-        print(json_string)
+        # print(json_string)
+        jsondata = json.loads(json_string)
+        processed_data = {key: flatten_single_pair_dicts(value) for key, value in jsondata[0].items()}
+
+        s = json.dumps(processed_data, indent=4)
+        print(s)
+        # for k, v in jsondata[0].items():
+        #     print(k, v)
         with open("./out.txt", "w", encoding='utf-8-sig') as f:
-            f.write(json_string)
+            f.write(s)
 if __name__ == "__main__":
     main()
